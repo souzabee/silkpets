@@ -78,7 +78,9 @@ Formato dos dados no Firestore:
 
 ## Demonstração
 
-Coloque aqui o vídeo ou GIF do app funcionando.
+Vídeo do app funcionando: [assistir no YouTube](https://youtu.be/L1ZhklxGZWU)
+
+[![Vídeo de demonstração do SilkPets](https://img.youtube.com/vi/L1ZhklxGZWU/hqdefault.jpg)](https://youtu.be/L1ZhklxGZWU)
 
 Telas do app (pasta `docs`):
 
@@ -124,7 +126,7 @@ Essas regras deixam as três coleções abertas para qualquer pessoa, o que serv
 ### 2. Executar localmente
 
 ```
-git clone <endereço do repositório>
+git clone https://github.com/souzabee/silkpets.git
 cd silkpets
 npm install
 npx expo start
@@ -151,11 +153,20 @@ npm install firebase
 
 ## Uso de IA
 
-Descreva aqui como a IA foi utilizada no desenvolvimento, conforme o Guia de Ética da disciplina.
+A IA generativa foi usada como ferramenta de apoio, seguindo o Guia de Ética da disciplina. Todo código sugerido pela IA foi lido, testado no Expo Go e ajustado antes de entrar no projeto, e as decisões de tema, telas e funcionalidades foram do autor.
+
+Como a IA foi usada:
+
+- **Dúvidas e depuração:** entender mensagens de erro do Expo e do Firestore (por exemplo, o erro de permissão quando as regras do banco expiram) e consultar o uso das bibliotecas na versão atual do Expo.
+- **Revisão de código:** sugestões para organizar as funções do banco em `PetsDB.js`, `PostsDB.js` e `UsuariosDB.js` e para reaproveitar componentes como `CartaoPost.js` e `FormPet.js`.
+- **Segurança da senha:** discussão sobre por que não gravar a senha em texto puro, que levou ao uso de sal + hash SHA-256 com `expo-crypto`.
+- **Documentação:** ajuda na redação e revisão deste README.
+
+O que não foi delegado à IA: a escolha do tema e dos requisitos, o desenho das telas, os testes no celular e a gravação do vídeo de demonstração.
 
 ## Aprendizados e Próximos Passos
 
-**Aprendizados:** escreva aqui um resumo da sua experiência e reflexão.
+**Aprendizados:** o projeto mostrou na prática como um app móvel se divide entre telas, navegação e dados. Com o Stack Navigator, aprendi a passar dados entre telas pelos parâmetros de rota, a recarregar a tela no evento `focus` e a usar `navigation.reset` no login e no logout, para o botão voltar não levar a uma tela que não faz mais sentido. No Firestore, aprendi a modelar as coleções, a usar `arrayUnion` e `arrayRemove` nas curtidas e nos comentários e que as regras de segurança fazem parte do app: quando o modo de teste expira, o app para de funcionar, e por isso os erros do banco passaram a ter mensagens claras e o botão "Tentar novamente". A curtida otimista (atualizar a tela antes e desfazer se a gravação falhar) mostrou como pequenos detalhes de UX mudam a sensação de velocidade. Por fim, ficou claro o limite de conferir o login no próprio app: sem o Firebase Authentication, as regras do banco não conseguem proteger os dados de cada tutor, e esse é o primeiro ponto a melhorar.
 
 **Próximos passos:**
 
